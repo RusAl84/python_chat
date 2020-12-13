@@ -4,6 +4,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 start_time = datetime.now().strftime('%H:%M:%S %d.%m.%Y')
+
 messages = [
 	{'username': 'Server', 'text': 'Server is running', 'timestamp': time.time()}
 ]

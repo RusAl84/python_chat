@@ -38,7 +38,6 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setGeometry(QtCore.QRect(210, 420, 191, 31))
         self.lineEdit_3.setObjectName("lineEdit_3")
         MainWindow.setCentralWidget(self.centralwidget)
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

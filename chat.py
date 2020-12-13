@@ -36,7 +36,6 @@ class GUI(QtWidgets.QMainWindow):
 		username = self.ui.lineEdit.text()
 		password = self.ui.lineEdit_3.text()
 		text = self.ui.lineEdit_2.text()
-
 		requests.get(
 			'http://127.0.0.1:5000/SendMessage',
 			json={'username': username, 'password': password, 'text': text})
