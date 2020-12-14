@@ -14,7 +14,7 @@ class GUI(QtWidgets.QMainWindow):
 
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.timer1_tick)
-		self.timer.start(1)
+		self.timer.start(100)
 
 		self.last_timestamp = 0
 
