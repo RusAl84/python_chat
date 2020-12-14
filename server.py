@@ -6,7 +6,7 @@ app = Flask(__name__)
 start_time = datetime.now().strftime('%H:%M:%S %d.%m.%Y')
 
 messages = [
-	{'username': 'Server', 'text': 'Server is running', 'timestamp': time.time()}
+	{'username': 'Server', 'text': 'Введите логин/пароль и нажмите "Send", чтоб войти в чат', 'timestamp': time.time()}
 ]
 users = {
 	'': ''

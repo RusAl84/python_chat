@@ -14,8 +14,9 @@ class GUI(QtWidgets.QMainWindow):
 
 		self.timer = QtCore.QTimer()
 		self.timer.timeout.connect(self.timer1_tick)
-		self.timer.start(100)
+		self.timer.start(1)
 
+		self.ui.lineEdit_2.setDisabled(True)
 		self.last_timestamp = 0
 
 	# получение сообщений
@@ -41,6 +42,11 @@ class GUI(QtWidgets.QMainWindow):
 			json={'username': username, 'password': password, 'text': text})
 
 		self.ui.lineEdit_2.setText(' ')
+
+		if password == '' or username == '':
+			self.ui.lineEdit_2.setDisabled(True)
+		else:
+			self.ui.lineEdit_2.setDisabled(False)
 
 
 if __name__ == '__main__':
