@@ -6,10 +6,10 @@ app = Flask(__name__)
 start_time = datetime.now().strftime('%H:%M:%S %d.%m.%Y')
 
 messages = [
-	{'username': 'Server', 'text': 'Введите логин/пароль и нажмите "Send", чтоб войти в чат', 'timestamp': time.time()}
+	{'username': 'Server', 'text': 'Введите логин/пароль.', 'timestamp': time.time()}
 ]
 users = {
-	'': ''
+
 }
 
 
@@ -43,7 +43,10 @@ def SendMessage():
 	else:
 		users[username] = password
 
-	messages.append({'username': username, 'text': text, 'timestamp': time.time()})
+	if username == '' or password == '':
+		return {'ok': False}
+	else:
+		messages.append({'username': username, 'text': text, 'timestamp': time.time()})
 
 	return {'ok': True}
 
