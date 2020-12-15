@@ -16,13 +16,15 @@ class GUI(QtWidgets.QMainWindow):
 		self.timer.timeout.connect(self.timer1_tick)
 		self.timer.start(1)
 
-		self.ui.lineEdit_2.setDisabled(True)
 		self.last_timestamp = 0
 
 	# получение сообщений
 	def timer1_tick(self):
+		status = requests.get('http://127.0.0.1:5000/status')
 		response = requests.get('http://127.0.0.1:5000/GetMessage', params={'after': self.last_timestamp})
 		messages = response.json()['messages']
+		users = status.json()['users_count']
+		self.ui.label.setText(f'Количество пользователей: {users}')
 		for message in messages:
 			dt = datetime.fromtimestamp(message['timestamp'])
 			dt = dt.strftime('%H:%M:%S %d.%m.%Y')
@@ -44,9 +46,7 @@ class GUI(QtWidgets.QMainWindow):
 		self.ui.lineEdit_2.setText(' ')
 
 		if password == '' or username == '':
-			self.ui.lineEdit_2.setDisabled(True)
-		else:
-			self.ui.lineEdit_2.setDisabled(False)
+			QtWidgets.QMessageBox.critical(self, 'Оповещение', 'Вы не ввели логин/пароль')
 
 
 if __name__ == '__main__':
